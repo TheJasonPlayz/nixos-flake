@@ -1,8 +1,8 @@
 #! /usr/bin/env bash
 
-script_dir = $(pwd)
+script_dir=$(pwd)
 
-nix build .#nixosConfigurations.jasonw.config.system.build.topLevel
+nix build .#nixosConfigurations.main-desktop.config.system.build.toplevel
 
-cd $pwd/result/bin
+cd $script_dir/result/bin
 sudo ./switch-to-configuration switch
