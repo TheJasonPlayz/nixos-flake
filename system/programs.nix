@@ -21,6 +21,7 @@
       shellAliases = {
         rebuild = "sudo nixos-rebuild switch";
         xmocomp = "xmonad --recompile && xmonad --restart";
+        home-restart = "sudo systemctl restart home-manager-jasonw";
       };
       ohMyZsh = {
         enable = true;
