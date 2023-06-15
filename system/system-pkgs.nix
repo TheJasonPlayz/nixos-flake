@@ -53,6 +53,7 @@ let
     fontpreview
     neofetch
     _1password
+    stow
   ];
 in {
   environment.systemPackages = development ++ gaming ++ deps ++ apps ++ utils;
