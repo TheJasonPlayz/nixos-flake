@@ -36,6 +36,10 @@ projects = [
     }, Project { projectName = "dev"
             , projectDirectory = "~/Documents/git"
             , projectStartHook = Nothing
+    }, Project {
+        projectName = "writing"
+        , projectDirectory = "~/Documents/Writing"
+        , projectStartHook = Nothing
     }
     ]
 
