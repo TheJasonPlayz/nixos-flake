@@ -1,36 +1,37 @@
 { pkgs, ... }:
 
 let
-   development = with pkgs; [
-     vscode
-     arduino
-     git
-     super-slicer-latest
-     printrun
-     nixfmt
-     nil
-   ];
-   gaming = with pkgs; [
-     minecraft    
-     goverlay 
-     mangohud
-     lutris
-     bottles
-     protonup-qt
-     heroic
+  development = with pkgs; [
+    vscode
+    arduino
+    git
+    super-slicer-latest
+    printrun
+    nixfmt
+    nil
+  ];
+  gaming = with pkgs; [
+    minecraft
+    prismlauncher
+    goverlay
+    mangohud
+    lutris
+    bottles
+    protonup-qt
+    heroic
   ];
   deps = with pkgs; [
     yad
     winePackages.minimal
     unzip
     xdotool
-    xxd 
+    xxd
     xorg.xwininfo
     bluez-alsa
     arc-theme
   ];
   apps = with pkgs; [
-    pavucontrol 
+    pavucontrol
     brave
     paprefs
     krita
@@ -42,7 +43,7 @@ let
     obsidian
   ];
   utils = with pkgs; [
-    steam-run  
+    steam-run
     mlocate
     wget
     bluez-tools
@@ -53,7 +54,6 @@ let
     neofetch
     _1password
   ];
-in
-{
+in {
   environment.systemPackages = development ++ gaming ++ deps ++ apps ++ utils;
 }
