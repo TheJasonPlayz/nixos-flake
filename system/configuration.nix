@@ -1,24 +1,21 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix 
-      ./hardware.nix
-      ./programs.nix
-      ./services.nix
-      ./system-pkgs.nix
-      <home-manager/nixos>
-      ./home/home.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./hardware.nix
+    ./programs.nix
+    ./services.nix
+    ./system-pkgs.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-#  boot.bootspec.enable = true;
-#  boot.lanzaboote.enable = true;
-#  boot.lanzaboote.pkiBundle = "/etc/secureboot";
+  #  boot.bootspec.enable = true;
+  #  boot.lanzaboote.enable = true;
+  #  boot.lanzaboote.pkiBundle = "/etc/secureboot";
 
-  networking.hostName = "JASONS_NIXOS"; 
+  networking.hostName = "JASONS_NIXOS";
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Denver";
@@ -42,13 +39,11 @@
     shell = pkgs.zsh;
   };
 
-  fonts.fonts = with pkgs; [
-    nerdfonts
-  ];
-  
+  fonts.fonts = with pkgs; [ nerdfonts ];
+
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
- 
+
   # Recomemended to leave at the release version of first install. For documentation, see https://nixos.org/nixos/options.html
   system.stateVersion = "23.05";
 }
