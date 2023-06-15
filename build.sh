@@ -18,7 +18,7 @@ dotfiles() {
 }
 
 nix_build() {
-    nix build .#nixosConfigurations.main-desktop.config.system.build.toplevel
+    sudo nix build .#nixosConfigurations.main-desktop.config.system.build.toplevel
 
     cd $script_dir/result/bin
     sudo ./switch-to-configuration switch
