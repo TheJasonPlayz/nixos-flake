@@ -4,49 +4,48 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/d7eb6f9a-12f7-482a-8e91-795f0bba58e2";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/d7eb6f9a-12f7-482a-8e91-795f0bba58e2";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8A15-0D49";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/8A15-0D49";
+    fsType = "vfat";
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/e7502b8a-cc10-4e84-a941-7c077a4e31c8";
-      fsType = "xfs";
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/e7502b8a-cc10-4e84-a941-7c077a4e31c8";
+    fsType = "xfs";
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/2abc0fcb-9708-4d80-86d2-f0dc74d18329";
-      fsType = "xfs";
-    };
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/2abc0fcb-9708-4d80-86d2-f0dc74d18329";
+    fsType = "xfs";
+  };
 
-  fileSystems."/opt" =
-    { device = "/dev/disk/by-uuid/1de2ab7a-36a9-412c-ad18-17045fce1739";
-      fsType = "ext4";
-    };
+  fileSystems."/opt" = {
+    device = "/dev/disk/by-uuid/1de2ab7a-36a9-412c-ad18-17045fce1739";
+    fsType = "ext4";
+  };
 
-  fileSystems."/tmp" =
-    { device = "/dev/disk/by-uuid/6917db84-9397-4c3b-b3c5-cb822b707ca0";
-      fsType = "ext4";
-    };
+  fileSystems."/tmp" = {
+    device = "/dev/disk/by-uuid/6917db84-9397-4c3b-b3c5-cb822b707ca0";
+    fsType = "ext4";
+  };
 
-  fileSystems."/var" =
-    { device = "/dev/disk/by-uuid/b01dbf96-1149-4fc1-8ed7-00045c33f92b";
-      fsType = "ext4";
-    };
+  fileSystems."/var" = {
+    device = "/dev/disk/by-uuid/b01dbf96-1149-4fc1-8ed7-00045c33f92b";
+    fsType = "ext4";
+  };
 
   swapDevices = [ ];
 
@@ -59,5 +58,6 @@
   # networking.interfaces.wlp36s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

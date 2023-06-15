@@ -21,17 +21,15 @@
 
     xserver = {
       enable = true;
-    
-      displayManager.lightdm = {
-        enable = true;
-      };
+
+      displayManager.lightdm = { enable = true; };
 
       windowManager.xmonad = {
         enable = true;
         enableContribAndExtras = true;
       };
 
-      videoDrivers = [ "amdgpu" ]; 
+      videoDrivers = [ "amdgpu" ];
     };
   };
   security.rtkit.enable = true;

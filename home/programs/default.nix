@@ -1,5 +1,1 @@
-[
- ./xmonad
- ./kitty
- ./rofi
-]
+[ ./xmonad ./kitty ./rofi ]
