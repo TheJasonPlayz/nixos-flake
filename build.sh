@@ -22,8 +22,6 @@ nix_build() {
 
     cd $script_dir/result/bin
     sudo ./switch-to-configuration switch
-
-    sudo kill -9 -1 
 }
 
 fresh_install() {
