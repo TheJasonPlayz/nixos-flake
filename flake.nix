@@ -9,9 +9,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lanzaboote.url = "github:nix-community/lanzaboote";
   };
 
-  outputs = { nixpkgs, nurpkgs, home-manager, ... }:
+  outputs = { nixpkgs, nurpkgs, home-manager, lanzaboote, ... }:
     let
       username = "jasonw";
       system = "x86_64-linux";
@@ -29,6 +31,7 @@
             home-manager.extraSpecialArgs = { inherit username; };
             home-manager.users.jasonw = import ./home/home.nix;
           }
+          lanzaboote.nixosModules.lanzaboote
         ];
       };
     };

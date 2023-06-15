@@ -9,11 +9,15 @@
     ./system-pkgs.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  #  boot.bootspec.enable = true;
-  #  boot.lanzaboote.enable = true;
-  #  boot.lanzaboote.pkiBundle = "/etc/secureboot";
+  boot = {
+    loader.systemd-boot.enable = lib.mkForce false;
+    loader.efi.canTouchEfiVariables = true;
+    bootspec.enable = true;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+  };
 
   networking.hostName = "JASONS_NIXOS";
   networking.networkmanager.enable = true;
