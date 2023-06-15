@@ -2,7 +2,41 @@
 
 script_dir=$(pwd)
 
-nix build .#nixosConfigurations.main-desktop.config.system.build.toplevel
+mk_dirs() {
+    mkdir ~/Documents/git
+    mkdir ~/Documents/Code
+}
 
-cd $script_dir/result/bin
-sudo ./switch-to-configuration switch
+dotfiles() {
+    cd ~/Documents/git
+    git clone https://github.com/thejasonplayz/my-dotfiles 
+
+    repo_dir=$git_dir/my-dotfiles
+
+    cd $repo_dir
+    ./stow.sh
+}
+
+nix_build() {
+    nix build .#nixosConfigurations.main-desktop.config.system.build.toplevel
+
+    cd $script_dir/result/bin
+    sudo ./switch-to-configuration switch
+}
+
+fresh_install() {
+    mk_dirs
+    dotfiles
+    nix_build
+}
+
+case $1 in 
+    "fresh_install")
+        fresh_install;;
+    "mk_dirs")
+        mk_dirs;;
+    "nix_build")
+        nix_build;;
+    *)
+        echo "Invalid option. Expected 'fresh_install', 'mk_dirs', or 'nix_build'";;
+esac
