@@ -41,6 +41,7 @@ let
     kmenuedit
     lxappearance
     obsidian
+    manuskript
   ];
   utils = with pkgs; [
     steam-run
