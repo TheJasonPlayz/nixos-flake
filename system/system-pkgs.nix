@@ -55,6 +55,8 @@ let
     neofetch
     _1password
     stow
+    pandoc
+    python311Packages.pyenchant
   ];
 in {
   environment.systemPackages = development ++ gaming ++ deps ++ apps ++ utils;
